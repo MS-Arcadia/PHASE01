@@ -3,15 +3,63 @@
 
 # Arcadia — پیوست کامل دیاگرام‌ها
 
-> مکمل Arcadia-Architecture.md — مجموعه‌ی کامل دیاگرام‌ها.
+> مکمل [Arcadia-Architecture.md](Arcadia-Architecture.md) (بخش ۵) — مجموعه‌ی کامل دیاگرام‌ها.
 > همه با **Mermaid**. شامل: C4 Component برای هر ۱۴ سرویس · همه‌ی Sequence/Flowها · توپولوژی رویدادها · ER دیتامدل هر سرویس.
 
 ## فهرست
 
+### الف) C4 Level 3 — Component (هر ۱۴ سرویس)
 - [الف) C4 Level 3 — Component (هر ۱۴ سرویس)](#الف-c4-level-3--component-هر-۱۴-سرویس)
+  - [الف-۱) Auth Service](#الف-۱-auth-service)
+  - [الف-۲) Profile Service](#الف-۲-profile-service)
+  - [الف-۳) Catalog Service](#الف-۳-catalog-service)
+  - [الف-۴) Store / Order Service](#الف-۴-store--order-service)
+  - [الف-۵) Wallet Service](#الف-۵-wallet-service)
+  - [الف-۶) Payment Gateway Adapter](#الف-۶-payment-gateway-adapter)
+  - [الف-۷) Marketplace Service](#الف-۷-marketplace-service)
+  - [الف-۸) Review Service](#الف-۸-review-service)
+  - [الف-۹) Community Service](#الف-۹-community-service)
+  - [الف-۱۰) Search Service (CQRS read side)](#الف-۱۰-search-service-cqrs-read-side)
+  - [الف-۱۱) Festival Service](#الف-۱۱-festival-service)
+  - [الف-۱۲) Recommendation Service](#الف-۱۲-recommendation-service)
+  - [الف-۱۳) Notification Service](#الف-۱۳-notification-service)
+  - [الف-۱۴) Media Service](#الف-۱۴-media-service)
+
+### ب) Sequence / Flow Diagrams
 - [ب) Sequence / Flow Diagrams](#ب-sequence--flow-diagrams)
+  - [ب-۱) ثبت‌نام + تأیید Support](#ب-۱-ثبت‌نام--تأیید-support)
+  - [ب-۲) درخواست نقش Developer/Support + تأیید/رد](#ب-۲-درخواست-نقش-developersupport--تأییدرد)
+  - [ب-۳) شارژ کیف پول از درگاه بانکی](#ب-۳-شارژ-کیف-پول-از-درگاه-بانکی)
+  - [ب-۴) استفاده از گیفت‌کارت + تشخیص abuse و ban](#ب-۴-استفاده-از-گیفت‌کارت--تشخیص-abuse-و-ban)
+  - [ب-۵) چرخه‌ی کامل انتشار بازی (Sequence)](#ب-۵-چرخه‌ی-کامل-انتشار-بازی-sequence)
+  - [ب-۶) ثبت نظر با بررسی خریدار بودن](#ب-۶-ثبت-نظر-با-بررسی-خریدار-بودن)
+  - [ب-۷) ایجاد پست + آپلود مدیا + ایندکس جستجو (Choreography)](#ب-۷-ایجاد-پست--آپلود-مدیا--ایندکس-جستجو-choreography)
+  - [ب-۸) ایجاد جشنواره + تخفیف + اطلاع به Developerها](#ب-۸-ایجاد-جشنواره--تخفیف--اطلاع-به-developerها)
+  - [ب-۹) تولید و سرو پیشنهاد (Recommendation)](#ب-۹-تولید-و-سرو-پیشنهاد-recommendation)
+  - [ب-۱۰) به‌روزرسانی وضعیت آنلاین (Presence — real-time)](#ب-۱۰-به‌روزرسانی-وضعیت-آنلاین-presence--real-time)
+  - [ب-۱۱) توزیع رندوم آیتم (سقف ۳ در هر بازی)](#ب-۱۱-توزیع-رندوم-آیتم-سقف-۳-در-هر-بازی)
+
+### ج) توپولوژی رویدادها (Event Choreography)
 - [ج) توپولوژی رویدادها (Event Choreography)](#ج-توپولوژی-رویدادها-event-choreography)
+  - [ج-۱) جریان رویدادهای مالی (Saga محور)](#ج-۱-جریان-رویدادهای-مالی-saga-محور)
+  - [ج-۲) جریان رویدادهای محتوا و رشد (Read-model fan-out)](#ج-۲-جریان-رویدادهای-محتوا-و-رشد-read-model-fan-out)
+
+### د) ER — دیتامدل هر سرویس
 - [د) ER — دیتامدل هر سرویس](#د-er--دیتامدل-هر-سرویس)
+  - [د-۱) Auth DB](#د-۱-auth-db)
+  - [د-۲) Profile DB (read-model / CQRS)](#د-۲-profile-db-read-model--cqrs)
+  - [د-۳) Catalog DB](#د-۳-catalog-db)
+  - [د-۴) Store / Order DB](#د-۴-store--order-db)
+  - [د-۵) Wallet DB](#د-۵-wallet-db)
+  - [د-۶) Marketplace DB](#د-۶-marketplace-db)
+  - [د-۷) Review DB](#د-۷-review-db)
+  - [د-۸) Community DB](#د-۸-community-db)
+  - [د-۹) Festival DB](#د-۹-festival-db)
+  - [د-۱۰) Notification DB](#د-۱۰-notification-db)
+  - [د-۱۱) Media DB](#د-۱۱-media-db)
+  - [د-۱۲) Recommendation DB (Vector / read-model)](#د-۱۲-recommendation-db-vector--read-model)
+  - [د-۱۳) Search (Elasticsearch — document model)](#د-۱۳-search-elasticsearch--document-model)
+  - [د-۱۴) Payment Adapter DB](#د-۱۴-payment-adapter-db)
 
 ---
 
